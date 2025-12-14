@@ -1,27 +1,28 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
-
 import os
+
 TOKEN = os.environ["TOKEN"]
 
 async def rules(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
-        [InlineKeyboardButton("рџ“њ РџСЂР°РІРёР»Р° С‡Р°С‚Сѓ", url="https://pastebin.com/SaYSTsFW")]
+        [InlineKeyboardButton("Правила чату", url="https://pastebin.com/SaYSTsFW")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "РџСЂР°РІРёР»Р° С‡Р°С‚Сѓ",
+        "Ось правила чата",
         reply_markup=reply_markup
     )
 
 async def shluhi_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "РљРѕРЅС‚Р°РєС‚Рё РІСЃС–С… С€Р»СЋС… Р§РёРєР°РіРѕ Сѓ РљС–СЂСЋС€С–, Р·РІРµСЂС‚Р°Р№С‚РµСЃСЏ РґРѕ РЅСЊРѕРіРѕ!"
+        "Контакти всіх шлюх Чикаго у Кірюші, звертайтеся до нього!"
     )
 
 app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(CommandHandler("rules", rules))
 app.add_handler(CommandHandler("shluhi", shluhi_command))
 
-print("Р‘РѕС‚ Р·Р°РїСѓС‰РµРЅРёР№. Р§РµРєР°СЋ РєРѕРјР°РЅРґРё /rules Р°Р±Рѕ /shluhi вЂ¦")
+print("Бот запущений. Чекаю команди /rules або /shluhi …")
 app.run_polling()
+
