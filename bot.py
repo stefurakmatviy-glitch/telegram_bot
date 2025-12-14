@@ -30,3 +30,21 @@ app.add_handler(CommandHandler("shluhi", shluhi_command))
 print("Бот запущений. Чекаю команди /rules або /shluhi …")
 app.run_polling()
 
+import os
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import threading
+
+PORT = int(os.environ.get("PORT", 8080))
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"Bot is running!")
+
+def run_server():
+    httpd = HTTPServer(('0.0.0.0', PORT), Handler)
+    httpd.serve_forever()
+
+threading.Thread(target=run_server, daemon=True).start()
+
