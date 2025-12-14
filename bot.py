@@ -10,13 +10,13 @@ async def rules(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "Ось правила чата",
+        "Here chat rules",
         reply_markup=reply_markup
     )
 
 async def shluhi_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Контакти всіх шлюх Чикаго у Кірюші, звертайтеся до нього!"
+        "+79140598671 her name Olezhka!"
     )
 
 app = ApplicationBuilder().token(TOKEN).build()
