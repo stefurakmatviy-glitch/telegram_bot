@@ -1,6 +1,7 @@
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
+import os
 TOKEN = os.environ["TOKEN"]
 
 async def rules(update: Update, context: ContextTypes.DEFAULT_TYPE):
